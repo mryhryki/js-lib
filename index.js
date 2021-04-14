@@ -1,19 +1,31 @@
 "use strict";
 
-import markdownIt from "markdown-it";
-import markdownItSanitizer from "markdown-it-sanitizer";
-import markdownItHighlightJs from "markdown-it-highlightjs";
-import markdownItEmoji from "markdown-it-emoji";
-import markdownItMark from "markdown-it-mark";
-import markdownItCheckbox from "markdown-it-checkbox";
-import { lineNumber } from "./line_number";
+const markdownIt = require("markdown-it");
+const markdownItSanitizer = require("markdown-it-sanitizer");
+const markdownItHighlightJs = require("markdown-it-highlightjs");
+const markdownItEmoji = require("markdown-it-emoji");
+const markdownItMark = require("markdown-it-mark");
+const markdownItCheckbox = require("markdown-it-checkbox");
 
-const md = markdownIt({ html: true, xhtmlOut: true, breaks: true, linkify: true })
+const lineNumber = (md) => {
+  md.renderer.rules.list_item_open = (tokens, idx, options, env, self) => {
+    const token = tokens[idx];
+    if (token != null && token.map != null) {
+      const index = token.map[0];
+      if (index >= 0) {
+        tokens[idx].attrSet("data-markdown-line-number", `${index + 1}`);
+      }
+    }
+    return self.renderToken(tokens, idx, options);
+  };
+};
+
+const md = markdownIt({html: true, xhtmlOut: true, breaks: true, linkify: true})
   .use(markdownItSanitizer)
   .use(markdownItHighlightJs)
   .use(markdownItEmoji)
   .use(markdownItMark)
-  .use(markdownItCheckbox, { disabled: null, idPrefix: "checkbox_", ulClass: null, liClass: null })
+  .use(markdownItCheckbox, {disabled: null, idPrefix: "checkbox_", ulClass: null, liClass: null})
   .use(lineNumber);
 
 const TitleMatchers = [
@@ -29,16 +41,7 @@ const TitleMatchers = [
 
 const TagMatcher = new RegExp("<\\/?[^>]+>", "g");
 
-interface Options {
-  includeMarkdownText?: boolean;
-}
-
-interface ConvertResult {
-  title: string;
-  html: string;
-}
-
-export const convert = (text: string, options: Options = {}): ConvertResult => {
+const convert = (text, options = {}) => {
   const includeMarkdownText = options.includeMarkdownText != null ? options.includeMarkdownText : false;
   let html = md.render(text).replace(/<img /g, '<img style="max-width:100%;object-fit:contain;" ').trim();
 
@@ -60,3 +63,5 @@ export const convert = (text: string, options: Options = {}): ConvertResult => {
     html,
   };
 };
+
+module.exports = {convert}

@@ -1,4 +1,4 @@
-const { convert } = require("../dist");
+const { convert } = require("./index");
 
 describe("Convert Markdown", () => {
   it("Basic Usage", () => {
