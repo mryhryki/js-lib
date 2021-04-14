@@ -1,10 +1,23 @@
 {
-  "name": "@mryhryki/js-markdown",
+  "name": "@mryhryki/markdown",
   "author": "mryhryki",
-  "private": true,
+  "description": "Markdown package",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mryhryki/js-markdown.git"
+  },
+  "keywords": [
+    "markdown"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mryhryki/js-markdown/issues"
+  },
+  "homepage": "https://github.com/mryhryki/js-markdown#readme",
   "engines": {
-    "node": "14.x",
-    "npm": "7.x"
+    "node": ">=12",
+    "npm": ">=7"
   },
   "scripts": {
     "test": "jest"
