@@ -22,7 +22,7 @@ const lineNumber = (md) => {
 
 const md = markdownIt({html: true, xhtmlOut: true, breaks: true, linkify: true})
   .use(markdownItSanitizer)
-  .use(markdownItHighlightJs)
+  .use(markdownItHighlightJs, {auto: false})
   .use(markdownItEmoji)
   .use(markdownItMark)
   .use(markdownItCheckbox, {disabled: null, idPrefix: "checkbox_", ulClass: null, liClass: null})
