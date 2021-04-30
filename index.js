@@ -41,13 +41,8 @@ const TitleMatchers = [
 
 const TagMatcher = new RegExp("<\\/?[^>]+>", "g");
 
-const convert = (text, options = {}) => {
-  const includeMarkdownText = options.includeMarkdownText != null ? options.includeMarkdownText : false;
-  let html = md.render(text).replace(/<img /g, '<img style="max-width:100%;object-fit:contain;" ').trim();
-
-  if (includeMarkdownText) {
-    html = `${html}\n<p><details><summary>Markdown</summary><pre>${text}</pre></details></p>`;
-  }
+const convert = (text) => {
+  const html = md.render(text).replace(/<img /g, '<img style="max-width:100%;object-fit:contain;" ').trim();
 
   let title = "NoTitle";
   for (const matcher of TitleMatchers) {

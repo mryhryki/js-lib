@@ -36,16 +36,6 @@ describe("Convert Markdown", () => {
 
     expect(convert(markdown).html).toEqual(html);
   });
-
-  it("include markdown text", () => {
-    const markdown = ["# Title", "Description"].join("\n");
-    const html = [
-      "<h1>Title</h1>",
-      "<p>Description</p>",
-      `<p><details><summary>Markdown</summary><pre>${markdown}</pre></details></p>`,
-    ].join("\n");
-    expect(convert(markdown, { includeMarkdownText: true }).html).toEqual(html);
-  });
 });
 
 describe("title", () => {
