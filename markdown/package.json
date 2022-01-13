@@ -1,0 +1,46 @@
+{
+  "name": "@mryhryki/markdown",
+  "author": "mryhryki",
+  "description": "Markdown package",
+  "version": "0.1.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mryhryki/js-markdown.git"
+  },
+  "keywords": [
+    "markdown"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mryhryki/js-markdown/issues"
+  },
+  "homepage": "https://github.com/mryhryki/js-markdown#readme",
+  "engines": {
+    "node": ">=12",
+    "npm": ">=7"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "markdown-it": "^12.0.4",
+    "markdown-it-checkbox": "^1.1.0",
+    "markdown-it-emoji": "^2.0.0",
+    "markdown-it-highlightjs": "^3.4.0",
+    "markdown-it-mark": "^3.0.1",
+    "markdown-it-sanitizer": "^0.4.3",
+    "markdown-it-task-lists": "^2.1.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "jest": {
+    "testTimeout": 1000,
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testMatch": [
+      "**/*.test.js"
+    ]
+  }
+}
