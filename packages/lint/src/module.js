@@ -1,7 +1,6 @@
 "use strict";
-const fs = require("fs/promises");
-const path = require("path");
 const { ESLint } = require("eslint");
+const { existFileOrDirectory, getFile, writeFile } = require("./util");
 
 /**
  * @link https://eslint.org/docs/user-guide/configuring/
@@ -37,15 +36,29 @@ const baseConfig = {
  */
 const lint = async (fix) => {
   try {
-    const overrideConfigFilePath = path.resolve(
-      `${process.cwd()}/.eslintrc.yaml`
-    );
-    const overrideConfigFile = await fs
-      .stat(overrideConfigFilePath)
-      .then(() => overrideConfigFilePath)
-      .catch(() => undefined);
+    const currentDir = process.cwd();
+    const eslintrc = `${currentDir}/.eslintrc.yaml`;
+    const prettierrc = `${currentDir}/.prettierrc.json`;
+    const editorConfig = `${currentDir}/.editorconfig`;
 
-    const eslint = new ESLint({ baseConfig, overrideConfigFile, fix });
+    if (!(await existFileOrDirectory(eslintrc))) {
+      const packageJson = require(`${currentDir}/package.json`);
+      const useReact = packageJson?.dependencies?.react != null || packageJson?.devDependencies?.react != null;
+      const config = await getFile(`.eslintrc.${useReact ? "react" : "node"}.yaml`);
+      await writeFile(eslintrc, config);
+    }
+
+    if (!(await existFileOrDirectory(prettierrc))) {
+      const config = await getFile(".prettierrc.json");
+      await writeFile(prettierrc, config);
+    }
+
+    if (!(await existFileOrDirectory(editorConfig))) {
+      const config = await getFile(".editorconfig");
+      await writeFile(editorConfig, config);
+    }
+
+    const eslint = new ESLint({ baseConfig, fix });
     const results = await eslint.lintFiles("**/*.js");
 
     if (fix) {
