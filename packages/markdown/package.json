@@ -2,10 +2,10 @@
   "name": "@mryhryki/markdown",
   "author": "mryhryki",
   "description": "Convert markdown to HTML library for personal use",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mryhryki/js-markdown.git",
+    "url": "git+https://github.com/mryhryki/js-lib.git",
     "directory": "packages/markdown"
   },
   "keywords": [
@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mryhryki/js-markdown/issues"
+    "url": "https://github.com/mryhryki/js-lib/issues"
   },
   "homepage": "https://github.com/mryhryki/js-lib/blob/main/packages/markdown/README.md",
   "engines": {
