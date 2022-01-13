@@ -1,0 +1,44 @@
+{
+  "name": "@mryhryki/lint",
+  "author": "mryhryki",
+  "description": "Lint tool pack for personal use",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mryhryki/js-lib.git",
+    "directory": "packages/lint"
+  },
+  "keywords": [
+    "lint"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mryhryki/js-lib/issues"
+  },
+  "homepage": "https://github.com/mryhryki/js-lib/blob/main/packages/lint/README.md",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
+  "bin": {
+    "mryhryki-lint": "./src/lint.js",
+    "mryhryki-lint-fix": "./src/fix.js"
+  },
+  "scripts": {
+    "lint": "node ./src/lint.js",
+    "fix": "node ./src/fix.js"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^25.3.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.5.1"
+  }
+}
