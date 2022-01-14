@@ -1,6 +1,6 @@
 # js-markdown
 
-[![npm version](https://badge.fury.io/js/@mryhryki%2Fmarkdown.svg)](https://badge.fury.io/js/@mryhryki%2Fmarkdown)
+[![npm version](https://badge.fury.io/js/@mryhryki%2Flint.svg)](https://badge.fury.io/js/@mryhryki%2Flint)
 
 Convert markdown to HTML library for personal use.
 
