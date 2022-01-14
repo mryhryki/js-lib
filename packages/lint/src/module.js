@@ -58,9 +58,18 @@ const lint = async (fix) => {
       await writeFile(editorConfig, config);
     }
 
-    const eslint = new ESLint({ baseConfig, fix });
-    const results = await eslint.lintFiles("**/*.js");
-
+    const eslint = new ESLint({ baseConfig, fix, errorOnUnmatchedPattern: false });
+    const patterns = [
+      `${currentDir}/*.js`,
+      `${currentDir}/*.jsx`,
+      `${currentDir}/*.ts`,
+      `${currentDir}/*.tsx`,
+      `${currentDir}/src/**/*.js`,
+      `${currentDir}/src/**/*.jsx`,
+      `${currentDir}/src/**/*.ts`,
+      `${currentDir}/src/**/*.tsx`,
+    ];
+    const results = await eslint.lintFiles(patterns);
     if (fix) {
       await ESLint.outputFixes(results);
     }
