@@ -23,4 +23,5 @@ export class DateTime {
   toUnixTimeMs(): number;
   add(value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "milliSecond"): DateTime;
   clone(): DateTime;
+  toString(): string;
 }

@@ -1,11 +1,11 @@
-import dayjs from "dayjs";
-import UTC from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+const dayjs = require("dayjs");
+const UTC = require("dayjs/plugin/utc");
+const timezone = require("dayjs/plugin/timezone");
 
 dayjs.extend(UTC);
 dayjs.extend(timezone);
 
-export class DateTime {
+class DateTime {
   #value = null;
   #units = ["year", "month", "day", "hour", "minute", "second", "milliSecond"];
 
@@ -52,7 +52,7 @@ export class DateTime {
       timezoneSign: timezoneText.slice(0, 1),
       timezoneHour: parseInt(timezoneText.slice(1, 3), 10),
       timezoneMinute: parseInt(timezoneText.slice(4, 7), 10),
-      weekday: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][value.day()],
+      weekday: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][value.day()]
     };
   }
 
@@ -88,4 +88,21 @@ export class DateTime {
   clone() {
     return new DateTime(this.#value);
   }
+
+  toString() {
+    return this.toISO();
+  }
+
+  [Symbol.toPrimitive](hint) {
+    switch (hint) {
+      case "string":
+        return this.toISO();
+      case "number":
+      case "default":
+      default:
+        return this.toUnixTimeMs();
+    }
+  }
 }
+
+module.exports = { DateTime };
