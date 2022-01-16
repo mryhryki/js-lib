@@ -1,0 +1,50 @@
+{
+  "name": "@mryhryki/datetime",
+  "author": "mryhryki",
+  "description": "DateTime library for personal use",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mryhryki/js-lib.git",
+    "directory": "packages/datetime"
+  },
+  "keywords": [
+    "datetime"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mryhryki/js-lib/issues"
+  },
+  "homepage": "https://github.com/mryhryki/js-lib/blob/main/packages/datetime/README.md",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
+  "scripts": {
+    "lint": "mryhryki-lint",
+    "lint:fix": "mryhryki-lint-fix",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "dayjs": "^1.10.7"
+  },
+  "devDependencies": {
+    "@mryhryki/lint": "^0.0.6",
+    "esbuild": "^0.14.11",
+    "esbuild-jest": "^0.5.0",
+    "jest": "^27.4.7"
+  },
+  "jest": {
+    "testTimeout": 1000,
+    "transform": {
+      "^.+\\.[jt]sx?$": "esbuild-jest"
+    },
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testMatch": [
+      "**/*.test.js"
+    ]
+  }
+}
