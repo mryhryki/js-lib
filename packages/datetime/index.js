@@ -7,6 +7,7 @@ dayjs.extend(Timezone)
 
 export class DateTime {
   #value = null;
+  #units = ["year", "month", "day", "hour", "minute", "second", "milliSecond"];
 
   constructor(dayjsObject) {
     this.#value = dayjsObject;
@@ -40,6 +41,18 @@ export class DateTime {
   toISO(timezone = "Asia/Tokyo") {
     return this.#value.tz(timezone).format("YYYY-MM-DDTHH:mm:ssZ");
   };
+
+  add(value, unit) {
+    if (typeof value !== "number" || isNaN(value)) {
+      throw new Error("DateTime.add: value must be a valid number");
+    } else if (!this.#units.includes(unit)) {
+      throw new Error(`DateTime.add: unit must be one of ${this.#units.join(", ")}`);
+    }
+    if (unit === "milliSecond") {
+      unit = "millisecond"
+    }
+    return new DateTime(this.#value.add(value, unit));
+  }
 
   get(timezone = "Asia/Tokyo") {
     const value = this.#value.tz(timezone)

@@ -117,3 +117,25 @@ describe("get()", () => {
     expect(element.unixTimeMs).toBe(unixTimeMs);
   });
 });
+
+describe("add()", () => {
+  it("add all 1", () => {
+    const element = DateTime.parse(ISO8601Ms).add(1, "year").add(1, "month").add(1, "day").add(1, "hour").add(1, "minute").add(1, "second").add(1, "milliSecond").get();
+    expect(element.year).toBe(year + 1);
+    expect(element.month).toBe(month + 1);
+    expect(element.day).toBe(day + 1);
+    expect(element.hour).toBe(hour + 1);
+    expect(element.minute).toBe(minute + 1);
+    expect(element.second).toBe(second + 1);
+    expect(element.milliSecond).toBe(milliSecond + 1);
+  });
+});
+
+describe("clone()", () => {
+  it("same value but not same instance", () => {
+    const datetime1 = DateTime.parse(ISO8601);
+    const datetime2 = datetime1.clone();
+    expect(datetime1.get().unixTimeMs).toBe(datetime2.get().unixTimeMs);
+    expect(datetime1.add(1, "second").get().second).not.toBe(datetime2.get().second);
+  });
+});

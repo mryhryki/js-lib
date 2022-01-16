@@ -20,6 +20,7 @@ export class DateTime {
   static atMs(unixTimeMs: number): DateTime;
   static now(): DateTime;
   toISO(timezone?: string): string;
+  add(value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "milliSecond"): DateTime;
   get(timezone?: string): DateTimeElement;
   clone(): DateTime
 }

@@ -38,7 +38,12 @@
   "jest": {
     "testTimeout": 1000,
     "transform": {
-      "^.+\\.[jt]sx?$": "esbuild-jest"
+      "^.+\\.[jt]sx?$": [
+        "esbuild-jest",
+        {
+          "sourcemap": true
+        }
+      ]
     },
     "moduleFileExtensions": [
       "js"
