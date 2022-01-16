@@ -16,8 +16,6 @@ const timezoneSign = "+";
 const timezoneHour = 9;
 const timezoneMinute = 0;
 const weekday = "sun";
-const unixTimeSec = UnixTimeSec;
-const unixTimeMs = UnixTimeMs;
 
 describe("parse()", () => {
   it("valid dateTimeText", () => {
@@ -29,14 +27,14 @@ describe("parse()", () => {
 describe("at()", () => {
   it("valid UnixTimeSec", () => {
     const datetime = DateTime.at(UnixTimeSec);
-    expect(datetime.get().unixTimeSec).toBe(UnixTimeSec);
+    expect(datetime.toUnixTime()).toBe(UnixTimeSec);
   });
 });
 
 describe("atMs()", () => {
   it("valid UnixTimeMs", () => {
     const datetime = DateTime.atMs(UnixTimeMs);
-    expect(datetime.get().unixTimeMs).toBe(UnixTimeMs);
+    expect(datetime.toUnixTimeMs()).toBe(UnixTimeMs);
   });
 });
 
@@ -44,7 +42,7 @@ describe("now()", () => {
   it("valid UnixTimeMs", () => {
     const now = Math.trunc(new Date().getTime() / 1000);
     const datetime = DateTime.now();
-    expect(datetime.get().unixTimeSec).toBe(now);
+    expect(datetime.toUnixTime()).toBe(now);
   });
 });
 
@@ -128,8 +126,6 @@ describe("get()", () => {
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
     expect(element.weekday).toBe(weekday);
-    expect(element.unixTimeSec).toBe(unixTimeSec);
-    expect(element.unixTimeMs).toBe(unixTimeSec * 1000);
   });
 
   it("from ISO8601Ms Text", () => {
@@ -145,8 +141,6 @@ describe("get()", () => {
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
     expect(element.weekday).toBe(weekday);
-    expect(element.unixTimeSec).toBe(unixTimeSec);
-    expect(element.unixTimeMs).toBe(unixTimeMs);
   });
 
   it("from UnixTimeSec", () => {
@@ -162,8 +156,6 @@ describe("get()", () => {
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
     expect(element.weekday).toBe(weekday);
-    expect(element.unixTimeSec).toBe(unixTimeSec);
-    expect(element.unixTimeMs).toBe(unixTimeSec * 1000);
   });
 
   it("from UnixTimeMs", () => {
@@ -179,8 +171,6 @@ describe("get()", () => {
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
     expect(element.weekday).toBe(weekday);
-    expect(element.unixTimeSec).toBe(unixTimeSec);
-    expect(element.unixTimeMs).toBe(unixTimeMs);
   });
 });
 

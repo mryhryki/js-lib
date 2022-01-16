@@ -53,8 +53,6 @@ export class DateTime {
       timezoneHour: parseInt(timezoneText.slice(1, 3), 10),
       timezoneMinute: parseInt(timezoneText.slice(4, 7), 10),
       weekday: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][value.day()],
-      unixTimeSec: value.unix(),
-      unixTimeMs: value.valueOf(),
     };
   }
 

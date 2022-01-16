@@ -10,8 +10,6 @@ export interface DateTimeElement {
   timezoneHour: number;
   timezoneMinute: number;
   weekday: "sun" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat";
-  unixTimeSec: number;
-  unixTimeMs: number;
 }
 
 export class DateTime {
