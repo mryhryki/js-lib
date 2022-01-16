@@ -1,5 +1,5 @@
-#.editorconfig
-#.eslintrc.yaml
-#.prettierrc.json
+.editorconfig
+.eslintrc.yaml
+.prettierrc.json
 node_modules
 package-lock.json
