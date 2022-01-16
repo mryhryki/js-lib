@@ -19,8 +19,10 @@ export class DateTime {
   static at(unixTimeSec: number): DateTime;
   static atMs(unixTimeMs: number): DateTime;
   static now(): DateTime;
-  toISO(timezone?: string): string;
-  add(value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "milliSecond"): DateTime;
   get(timezone?: string): DateTimeElement;
-  clone(): DateTime
+  toISO(timezone?: string): string;
+  toUnixTime(): number;
+  toUnixTimeMs(): number;
+  add(value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "milliSecond"): DateTime;
+  clone(): DateTime;
 }

@@ -42,7 +42,7 @@ describe("atMs()", () => {
 
 describe("now()", () => {
   it("valid UnixTimeMs", () => {
-    const now = Math.trunc((new Date()).getTime() / 1000);
+    const now = Math.trunc(new Date().getTime() / 1000);
     const datetime = DateTime.now();
     expect(datetime.get().unixTimeSec).toBe(now);
   });
@@ -50,8 +50,13 @@ describe("now()", () => {
 
 describe("toISO()", () => {
   it("from ISO8601 Text", () => {
-    const datetime = DateTime.parse(ISO8601Ms);
+    const datetime = DateTime.parse(ISO8601);
     expect(datetime.toISO()).toBe(ISO8601);
+  });
+
+  it("from ISO8601Ms Text", () => {
+    const datetime = DateTime.parse(ISO8601Ms);
+    expect(datetime.toUnixTime()).toBe(UnixTimeSec);
   });
 
   it("from UnixTimeSec", () => {
@@ -65,8 +70,69 @@ describe("toISO()", () => {
   });
 });
 
+describe("toUnixTime()", () => {
+  it("from ISO8601 Text", () => {
+    const datetime = DateTime.parse(ISO8601);
+    expect(datetime.toUnixTime()).toBe(UnixTimeSec);
+  });
+
+  it("from ISO8601Ms Text", () => {
+    const datetime = DateTime.parse(ISO8601Ms);
+    expect(datetime.toUnixTime()).toBe(UnixTimeSec);
+  });
+
+  it("from UnixTimeSec", () => {
+    const datetime = DateTime.at(UnixTimeSec);
+    expect(datetime.toUnixTime()).toBe(UnixTimeSec);
+  });
+
+  it("from UnixTimeMs", () => {
+    const datetime = DateTime.atMs(UnixTimeMs);
+    expect(datetime.toUnixTime()).toBe(UnixTimeSec);
+  });
+});
+
+describe("toUnixTimeMs()", () => {
+  it("from ISO8601 Text", () => {
+    const datetime = DateTime.parse(ISO8601);
+    expect(datetime.toUnixTimeMs()).toBe(UnixTimeSec * 1000);
+  });
+
+  it("from ISO8601Ms Text", () => {
+    const datetime = DateTime.parse(ISO8601Ms);
+    expect(datetime.toUnixTimeMs()).toBe(UnixTimeMs);
+  });
+
+  it("from UnixTimeSec", () => {
+    const datetime = DateTime.at(UnixTimeSec);
+    expect(datetime.toUnixTimeMs()).toBe(UnixTimeSec * 1000);
+  });
+
+  it("from UnixTimeMs", () => {
+    const datetime = DateTime.atMs(UnixTimeMs);
+    expect(datetime.toUnixTimeMs()).toBe(UnixTimeMs);
+  });
+});
+
 describe("get()", () => {
   it("from ISO8601 Text", () => {
+    const element = DateTime.parse(ISO8601).get();
+    expect(element.year).toBe(year);
+    expect(element.month).toBe(month);
+    expect(element.day).toBe(day);
+    expect(element.hour).toBe(hour);
+    expect(element.minute).toBe(minute);
+    expect(element.second).toBe(second);
+    expect(element.milliSecond).toBe(0);
+    expect(element.timezoneSign).toBe(timezoneSign);
+    expect(element.timezoneHour).toBe(timezoneHour);
+    expect(element.timezoneMinute).toBe(timezoneMinute);
+    expect(element.weekday).toBe(weekday);
+    expect(element.unixTimeSec).toBe(unixTimeSec);
+    expect(element.unixTimeMs).toBe(unixTimeSec * 1000);
+  });
+
+  it("from ISO8601Ms Text", () => {
     const element = DateTime.parse(ISO8601Ms).get();
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
@@ -120,7 +186,15 @@ describe("get()", () => {
 
 describe("add()", () => {
   it("add all 1", () => {
-    const element = DateTime.parse(ISO8601Ms).add(1, "year").add(1, "month").add(1, "day").add(1, "hour").add(1, "minute").add(1, "second").add(1, "milliSecond").get();
+    const element = DateTime.parse(ISO8601Ms)
+      .add(1, "year")
+      .add(1, "month")
+      .add(1, "day")
+      .add(1, "hour")
+      .add(1, "minute")
+      .add(1, "second")
+      .add(1, "milliSecond")
+      .get();
     expect(element.year).toBe(year + 1);
     expect(element.month).toBe(month + 1);
     expect(element.day).toBe(day + 1);
@@ -132,10 +206,10 @@ describe("add()", () => {
 });
 
 describe("clone()", () => {
-  it("same value but not same instance", () => {
+  it("has same value but not same instance", () => {
     const datetime1 = DateTime.parse(ISO8601);
     const datetime2 = datetime1.clone();
     expect(datetime1.get().unixTimeMs).toBe(datetime2.get().unixTimeMs);
-    expect(datetime1.add(1, "second").get().second).not.toBe(datetime2.get().second);
+    expect(datetime1).not.toBe(datetime2);
   });
 });
