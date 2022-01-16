@@ -1,8 +1,8 @@
-# js-markdown
+# @mryhryki/lint
 
 [![npm version](https://badge.fury.io/js/@mryhryki%2Flint.svg)](https://badge.fury.io/js/@mryhryki%2Flint)
 
-Convert markdown to HTML library for personal use.
+Lint package for personal use.
 
 ## How to use
 
