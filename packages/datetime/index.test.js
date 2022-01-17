@@ -23,6 +23,10 @@ describe("parse()", () => {
     const datetime = DateTime.parse(ISO8601Ms);
     expect(datetime.toISO()).toBe(ISO8601);
   });
+
+  it ("invalid dateTimeText", () => {
+    expect(() => DateTime.parse("hEPDKoWojaKdQrnyXCYq")).toThrow("Invalid Value");
+  })
 });
 
 describe("at()", () => {

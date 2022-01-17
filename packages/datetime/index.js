@@ -13,8 +13,11 @@ class DateTime {
     return String(num).padStart(len, "0");
   }
 
-  constructor(dayjsObject) {
-    this.#value = dayjsObject;
+  constructor(dayjsInstance) {
+    if (dayjsInstance.toString() === "Invalid Date") {
+      throw new Error("Invalid Value")
+    }
+    this.#value = dayjsInstance;
   }
 
   static parse(dateTimeText) {
