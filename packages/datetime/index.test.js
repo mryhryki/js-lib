@@ -7,7 +7,7 @@ const UnixTimeMs = 1642321959091;
 
 const year = "2022";
 const month = "01";
-const date = "16";
+const day = "16";
 const hour = "17";
 const minute = "32";
 const second = "39";
@@ -118,7 +118,7 @@ describe("get()", () => {
     const element = DateTime.parse(ISO8601).get();
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
-    expect(element.date).toBe(date);
+    expect(element.day).toBe(day);
     expect(element.hour).toBe(hour);
     expect(element.minute).toBe(minute);
     expect(element.second).toBe(second);
@@ -133,7 +133,7 @@ describe("get()", () => {
     const element = DateTime.parse(ISO8601Ms).get();
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
-    expect(element.date).toBe(date);
+    expect(element.day).toBe(day);
     expect(element.hour).toBe(hour);
     expect(element.minute).toBe(minute);
     expect(element.second).toBe(second);
@@ -148,7 +148,7 @@ describe("get()", () => {
     const element = DateTime.at(UnixTimeSec).get();
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
-    expect(element.date).toBe(date);
+    expect(element.day).toBe(day);
     expect(element.hour).toBe(hour);
     expect(element.minute).toBe(minute);
     expect(element.second).toBe(second);
@@ -163,7 +163,7 @@ describe("get()", () => {
     const element = DateTime.atMs(UnixTimeMs).get();
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
-    expect(element.date).toBe(date);
+    expect(element.day).toBe(day);
     expect(element.hour).toBe(hour);
     expect(element.minute).toBe(minute);
     expect(element.second).toBe(second);
@@ -180,7 +180,7 @@ describe("add()", () => {
     const element = DateTime.parse(ISO8601Ms)
       .add(1, "year")
       .add(1, "month")
-      .add(1, "date")
+      .add(1, "day")
       .add(1, "hour")
       .add(1, "minute")
       .add(1, "second")
@@ -188,7 +188,7 @@ describe("add()", () => {
       .get();
     expect(element.year).toBe(padZero(parseInt(year, 10) + 1, 4));
     expect(element.month).toBe(padZero(parseInt(month, 10) + 1, 2));
-    expect(element.date).toBe(padZero(parseInt(date, 10) + 1, 2));
+    expect(element.day).toBe(padZero(parseInt(day, 10) + 1, 2));
     expect(element.hour).toBe(padZero(parseInt(hour, 10) + 1, 2));
     expect(element.minute).toBe(padZero(parseInt(minute, 10) + 1, 2));
     expect(element.second).toBe(padZero(parseInt(second, 10) + 1, 2));
@@ -201,7 +201,7 @@ describe("set()", () => {
     const element = DateTime.parse(ISO8601Ms)
       .set("year", 1999)
       .set("month", 1)
-      .set("date", 1)
+      .set("day", 1)
       .set("hour", 1)
       .set("minute", 1)
       .set("second", 1)
@@ -209,7 +209,7 @@ describe("set()", () => {
       .get();
     expect(element.year).toBe(padZero(1999, 4));
     expect(element.month).toBe(padZero(1, 2));
-    expect(element.date).toBe(padZero(1, 2));
+    expect(element.day).toBe(padZero(1, 2));
     expect(element.hour).toBe(padZero(1, 2));
     expect(element.minute).toBe(padZero( 1, 2));
     expect(element.second).toBe(padZero(1, 2));

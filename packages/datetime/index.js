@@ -7,7 +7,7 @@ dayjs.extend(timezone);
 
 class DateTime {
   #value = null;
-  #units = ["year", "month", "date", "hour", "minute", "second", "milliSecond"];
+  #units = ["year", "month", "day", "hour", "minute", "second", "milliSecond"];
 
   static #padZero(num, len) {
     return String(num).padStart(len, "0");
@@ -48,7 +48,7 @@ class DateTime {
     return {
       year: DateTime.#padZero(value.year(), 4),
       month: DateTime.#padZero(value.month() + 1, 2),
-      date: DateTime.#padZero(value.date(), 2),
+      day: DateTime.#padZero(value.date(), 2),
       hour: DateTime.#padZero(value.hour(), 2),
       minute: DateTime.#padZero(value.minute(), 2),
       second: DateTime.#padZero(value.second(), 2),
@@ -61,8 +61,8 @@ class DateTime {
   }
 
   toISO(timezone = "Asia/Tokyo") {
-    const { year, month, date, hour, minute, second, timezoneSign, timezoneHour, timezoneMinute } = this.get(timezone);
-    return `${year}-${month}-${date}T${hour}:${minute}:${second}${timezoneSign}${timezoneHour}:${timezoneMinute}`;
+    const { year, month, day, hour, minute, second, timezoneSign, timezoneHour, timezoneMinute } = this.get(timezone);
+    return `${year}-${month}-${day}T${hour}:${minute}:${second}${timezoneSign}${timezoneHour}:${timezoneMinute}`;
   }
 
   toUnixTime() {
@@ -81,8 +81,6 @@ class DateTime {
     }
     if (unit === "milliSecond") {
       unit = "millisecond";
-    } else if (unit === "date") {
-      unit = "day"
     }
     return new DateTime(this.#value.add(value, unit));
   }
@@ -93,10 +91,12 @@ class DateTime {
     } else if (typeof value !== "number" || isNaN(value)) {
       throw new Error("DateTime.set: value must be a valid number");
     }
-    if (unit === "milliSecond") {
+    if (unit === "month") {
+      value = value - 1;
+    } else if (unit === "day") {
+      unit = "date";
+    } else if (unit === "milliSecond") {
       unit = "millisecond";
-    } else if (unit === "month") {
-      value = value - 1
     }
     return new DateTime(this.#value.set(unit, value));
   }

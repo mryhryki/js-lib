@@ -2,7 +2,7 @@
   "name": "@mryhryki/datetime",
   "author": "mryhryki",
   "description": "DateTime library for personal use",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mryhryki/js-lib.git",
