@@ -1,7 +1,7 @@
 export interface DateTimeElement {
   year: string;
   month: string; // 1-12
-  day: string;
+  date: string;
   hour: string;
   minute: string;
   second: string;
@@ -21,7 +21,8 @@ export class DateTime {
   toISO(timezone?: string): string;
   toUnixTime(): number;
   toUnixTimeMs(): number;
-  add(value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "milliSecond"): DateTime;
+  add(value: number, unit: "year" | "month" | "date" | "hour" | "minute" | "second" | "milliSecond"): DateTime;
+  set(unit: "year" | "month" | "date" | "hour" | "minute" | "second" | "milliSecond", value: number): DateTime;
   clone(): DateTime;
   toString(): string;
 }
