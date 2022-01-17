@@ -5,17 +5,18 @@ const ISO8601Ms = "2022-01-16T17:32:39.091+09:00";
 const UnixTimeSec = 1642321959;
 const UnixTimeMs = 1642321959091;
 
-const year = 2022;
-const month = 1;
-const day = 16;
-const hour = 17;
-const minute = 32;
-const second = 39;
-const milliSecond = 91;
+const year = "2022";
+const month = "01";
+const day = "16";
+const hour = "17";
+const minute = "32";
+const second = "39";
+const milliSecond = "091";
 const timezoneSign = "+";
-const timezoneHour = 9;
-const timezoneMinute = 0;
+const timezoneHour = "09";
+const timezoneMinute = "00";
 const weekday = "sun";
+const padZero = (num, len) => String(num).padStart(len, "0");
 
 describe("parse()", () => {
   it("valid dateTimeText", () => {
@@ -121,7 +122,7 @@ describe("get()", () => {
     expect(element.hour).toBe(hour);
     expect(element.minute).toBe(minute);
     expect(element.second).toBe(second);
-    expect(element.milliSecond).toBe(0);
+    expect(element.milliSecond).toBe("000");
     expect(element.timezoneSign).toBe(timezoneSign);
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
@@ -151,7 +152,7 @@ describe("get()", () => {
     expect(element.hour).toBe(hour);
     expect(element.minute).toBe(minute);
     expect(element.second).toBe(second);
-    expect(element.milliSecond).toBe(0);
+    expect(element.milliSecond).toBe("000");
     expect(element.timezoneSign).toBe(timezoneSign);
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
@@ -185,13 +186,13 @@ describe("add()", () => {
       .add(1, "second")
       .add(1, "milliSecond")
       .get();
-    expect(element.year).toBe(year + 1);
-    expect(element.month).toBe(month + 1);
-    expect(element.day).toBe(day + 1);
-    expect(element.hour).toBe(hour + 1);
-    expect(element.minute).toBe(minute + 1);
-    expect(element.second).toBe(second + 1);
-    expect(element.milliSecond).toBe(milliSecond + 1);
+    expect(element.year).toBe(padZero(parseInt(year, 10) + 1, 4));
+    expect(element.month).toBe(padZero(parseInt(month, 10) + 1, 2));
+    expect(element.day).toBe(padZero(parseInt(day, 10) + 1, 2));
+    expect(element.hour).toBe(padZero(parseInt(hour, 10) + 1, 2));
+    expect(element.minute).toBe(padZero(parseInt(minute, 10) + 1, 2));
+    expect(element.second).toBe(padZero(parseInt(second, 10) + 1, 2));
+    expect(element.milliSecond).toBe(padZero(parseInt(milliSecond, 10) + 1, 3));
   });
 });
 

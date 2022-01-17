@@ -9,6 +9,10 @@ class DateTime {
   #value = null;
   #units = ["year", "month", "day", "hour", "minute", "second", "milliSecond"];
 
+  static #padZero(num, len) {
+    return String(num).padStart(len, "0");
+  }
+
   constructor(dayjsObject) {
     this.#value = dayjsObject;
   }
@@ -42,17 +46,17 @@ class DateTime {
     const value = this.#value.tz(timezone);
     const timezoneText = value.format("Z");
     return {
-      year: value.year(),
-      month: value.month() + 1,
-      day: value.date(),
-      hour: value.hour(),
-      minute: value.minute(),
-      second: value.second(),
-      milliSecond: value.millisecond(),
+      year: DateTime.#padZero(value.year(), 4),
+      month: DateTime.#padZero(value.month() + 1, 2),
+      day: DateTime.#padZero(value.date(), 2),
+      hour: DateTime.#padZero(value.hour(), 2),
+      minute: DateTime.#padZero(value.minute(), 2),
+      second: DateTime.#padZero(value.second(), 2),
+      milliSecond: DateTime.#padZero(value.millisecond(), 3),
       timezoneSign: timezoneText.slice(0, 1),
-      timezoneHour: parseInt(timezoneText.slice(1, 3), 10),
-      timezoneMinute: parseInt(timezoneText.slice(4, 7), 10),
-      weekday: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][value.day()],
+      timezoneHour: timezoneText.slice(1, 3),
+      timezoneMinute: timezoneText.slice(4, 7),
+      weekday: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][value.day()]
     };
   }
 

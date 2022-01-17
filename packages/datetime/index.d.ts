@@ -1,14 +1,14 @@
 export interface DateTimeElement {
-  year: number;
-  month: number; // 1-12
-  day: number;
-  hour: number;
-  minute: number;
-  second: number;
-  milliSecond: number;
+  year: string;
+  month: string; // 1-12
+  day: string;
+  hour: string;
+  minute: string;
+  second: string;
+  milliSecond: string;
   timezoneSign: "+" | "-";
-  timezoneHour: number;
-  timezoneMinute: number;
+  timezoneHour: string;
+  timezoneMinute: string;
   weekday: "sun" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat";
 }
 
