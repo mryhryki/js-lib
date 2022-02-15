@@ -13,7 +13,7 @@ const lineNumber = (md) => {
     if (token != null && token.map != null) {
       const index = token.map[0];
       if (index >= 0) {
-        tokens[idx].attrSet("data-markdown-line-number", `${index + 1}`);
+        tokens[idx].attrSet("data-mdln", `${index + 1}`);
       }
     }
     return self.renderToken(tokens, idx, options);
