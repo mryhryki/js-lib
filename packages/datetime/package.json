@@ -2,7 +2,7 @@
   "name": "@mryhryki/datetime",
   "author": "mryhryki",
   "description": "DateTime library for personal use",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mryhryki/js-lib.git",
@@ -27,13 +27,13 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "dayjs": "^1.10.7"
+    "dayjs": "^1.11.1"
   },
   "devDependencies": {
     "@mryhryki/lint": "^0.0.6",
-    "esbuild": "^0.14.11",
+    "esbuild": "^0.14.38",
     "esbuild-jest": "^0.5.0",
-    "jest": "^27.4.7"
+    "jest": "^28.0.3"
   },
   "jest": {
     "testTimeout": 1000,
