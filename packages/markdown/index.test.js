@@ -30,7 +30,7 @@ describe("Convert Markdown", () => {
       '<li data-mdln="10"><input type="checkbox" id="checkbox_0" /><label for="checkbox_0">TODO</label></li>',
       '<li data-mdln="11"><input type="checkbox" id="checkbox_1" checked="true" /><label for="checkbox_1">DONE</label></li>',
       "</ul>",
-      '<pre><code class="hljs language-json">{<span class="hljs-attr">&quot;foo&quot;</span>:<span class="hljs-string">&quot;bar&quot;</span>}',
+      '<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">&quot;foo&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;bar&quot;</span><span class="hljs-punctuation">}</span>',
       "</code></pre>",
     ].join("\n");
 
