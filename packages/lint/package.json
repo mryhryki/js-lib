@@ -21,8 +21,7 @@
     "npm": ">=8"
   },
   "bin": {
-    "mryhryki-lint": "./src/lint.js",
-    "mryhryki-lint-fix": "./src/fix.js"
+    "mryhryki-lint": "./src/lint.js"
   },
   "scripts": {
     "lint": "node ./src/lint.js",
