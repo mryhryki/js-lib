@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
-const path = require("node:path")
+const path = require("node:path");
 const { ESLint } = require("eslint");
 const { existFileOrDirectory, getFile, writeFile } = require("./util");
 
@@ -17,24 +17,24 @@ const lint = async () => {
     const editorConfig = `${currentDir}/.editorconfig`;
 
     const options = { dir: currentDir, fix: false };
-    for (let i = 2; i < process.argv.length; i++){
-      const arg = process.argv[i]
+    for (let i = 2; i < process.argv.length; i++) {
+      const arg = process.argv[i];
       switch (arg) {
         case "--directory":
         case "-d":
-          options.dir =path.resolve(currentDir, process.argv[i + 1])
+          options.dir = path.resolve(currentDir, process.argv[i + 1]);
           i++;
           break;
         case "--fix":
-          options.fix = true
+          options.fix = true;
           break;
       }
     }
 
     if (!options.dir.startsWith(`${currentDir}/`)) {
-      throw new Error(`Invalid directory: ${options.dir}`)
+      throw new Error(`Invalid directory: ${options.dir}`);
     }
-    console.info(`Target directory: ${options.dir}`)
+    console.info(`Target directory: ${options.dir}`);
 
     if (!(await existFileOrDirectory(eslintrc))) {
       const config = await getFile(".eslintrc.yaml");
@@ -60,7 +60,7 @@ const lint = async () => {
       `${options.dir}/src/**/*.js`,
       `${options.dir}/src/**/*.jsx`,
       `${options.dir}/src/**/*.ts`,
-      `${options.dir}/src/**/*.tsx`
+      `${options.dir}/src/**/*.tsx`,
     ];
     const results = await eslint.lintFiles(patterns);
     if (options.fix) {
@@ -77,4 +77,4 @@ const lint = async () => {
   }
 };
 
-lint()
+lint();

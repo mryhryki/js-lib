@@ -24,8 +24,8 @@
     "mryhryki-lint": "./src/lint.js"
   },
   "scripts": {
-    "lint": "node ./src/lint.js",
-    "fix": "node ./src/fix.js"
+    "lint": "node ./src/lint.js --directory ./src/",
+    "fix": "node ./src/lint.js -d ./src --fix"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.22.0",

@@ -8,8 +8,5 @@ Lint package for personal use.
 
 ```shell
 # Check
-$ `npm bin`/mryhryki-lint
-
-# Fix error 
-$ `npm bin`/mryhryki-lint-fix
+$ `npm bin`/mryhryki-lint --directory ./ --fix
 ```
