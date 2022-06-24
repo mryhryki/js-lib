@@ -24,9 +24,9 @@ describe("parse()", () => {
     expect(datetime.toISO()).toBe(ISO8601);
   });
 
-  it ("invalid dateTimeText", () => {
+  it("invalid dateTimeText", () => {
     expect(() => DateTime.parse("hEPDKoWojaKdQrnyXCYq")).toThrow("Invalid Value");
-  })
+  });
 });
 
 describe("at()", () => {
@@ -215,12 +215,11 @@ describe("set()", () => {
     expect(element.month).toBe(padZero(1, 2));
     expect(element.day).toBe(padZero(1, 2));
     expect(element.hour).toBe(padZero(1, 2));
-    expect(element.minute).toBe(padZero( 1, 2));
+    expect(element.minute).toBe(padZero(1, 2));
     expect(element.second).toBe(padZero(1, 2));
     expect(element.milliSecond).toBe(padZero(1, 3));
   });
 });
-
 
 describe("clone()", () => {
   it("has same value but not same instance", () => {
