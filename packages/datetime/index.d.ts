@@ -1,6 +1,6 @@
 export interface DateTimeElement {
-  year: string;
-  month: string; // 1-12
+  year: string; // e.g.
+  month: string; // 01-12
   day: string;
   hour: string;
   minute: string;

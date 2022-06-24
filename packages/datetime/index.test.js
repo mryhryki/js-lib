@@ -226,7 +226,7 @@ describe("clone()", () => {
   it("has same value but not same instance", () => {
     const datetime1 = DateTime.parse(ISO8601);
     const datetime2 = datetime1.clone();
-    expect(datetime1.get().unixTimeMs).toBe(datetime2.get().unixTimeMs);
+    expect(datetime1.toUnixTimeMs()).toBe(datetime2.toUnixTimeMs());
     expect(datetime1).not.toBe(datetime2);
   });
 });
