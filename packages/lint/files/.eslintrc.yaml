@@ -2,6 +2,7 @@ extends:
   - plugin:@typescript-eslint/recommended
   - plugin:react/recommended
   - plugin:react-hooks/recommended
+  - plugin:import/recommended
   - prettier
 plugins:
   - jest
@@ -24,10 +25,11 @@ parserOptions:
   ecmaVersion: 11
   sourceType: module
 rules:
-  prettier/prettier: error
-  react/prop-types: 'off'
-  'react-hooks/exhaustive-deps': 'off'
   '@typescript-eslint/no-var-requires': 'off'
+  prettier/prettier: error
+  react-hooks/exhaustive-deps: 'off'
+  react/prop-types: 'off'
 settings:
   react:
     version: detect
+  import/extensions: 'always'
