@@ -9,6 +9,7 @@ export interface DateTimeElement {
   timezoneSign: "+" | "-";
   timezoneHour: string;
   timezoneMinute: string;
+  weekOfYear: number;
   weekday: "sun" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat";
 }
 

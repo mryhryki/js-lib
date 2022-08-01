@@ -1,9 +1,11 @@
 const dayjs = require("dayjs");
 const UTC = require("dayjs/plugin/utc");
 const timezone = require("dayjs/plugin/timezone");
+const weekOfYear = require("dayjs/plugin/weekOfYear");
 
 dayjs.extend(UTC);
 dayjs.extend(timezone);
+dayjs.extend(weekOfYear);
 
 class DateTime {
   #value = null;
@@ -15,7 +17,7 @@ class DateTime {
 
   constructor(dayjsInstance) {
     if (dayjsInstance.toString() === "Invalid Date") {
-      throw new Error("Invalid Value")
+      throw new Error("Invalid Value");
     }
     this.#value = dayjsInstance;
   }
@@ -59,7 +61,8 @@ class DateTime {
       timezoneSign: timezoneText.slice(0, 1),
       timezoneHour: timezoneText.slice(1, 3),
       timezoneMinute: timezoneText.slice(4, 7),
-      weekday: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][value.day()]
+      weekOfYear: value.week(),
+      weekday: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][value.day()],
     };
   }
 

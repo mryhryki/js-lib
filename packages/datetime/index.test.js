@@ -15,6 +15,7 @@ const milliSecond = "091";
 const timezoneSign = "+";
 const timezoneHour = "09";
 const timezoneMinute = "00";
+const weekOfYear = 4;
 const weekday = "sun";
 const padZero = (num, len) => String(num).padStart(len, "0");
 
@@ -130,6 +131,7 @@ describe("get()", () => {
     expect(element.timezoneSign).toBe(timezoneSign);
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
+    expect(element.weekOfYear).toBe(weekOfYear);
     expect(element.weekday).toBe(weekday);
   });
 
@@ -145,6 +147,7 @@ describe("get()", () => {
     expect(element.timezoneSign).toBe(timezoneSign);
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
+    expect(element.weekOfYear).toBe(weekOfYear);
     expect(element.weekday).toBe(weekday);
   });
 
@@ -160,6 +163,7 @@ describe("get()", () => {
     expect(element.timezoneSign).toBe(timezoneSign);
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
+    expect(element.weekOfYear).toBe(weekOfYear);
     expect(element.weekday).toBe(weekday);
   });
 
@@ -175,6 +179,7 @@ describe("get()", () => {
     expect(element.timezoneSign).toBe(timezoneSign);
     expect(element.timezoneHour).toBe(timezoneHour);
     expect(element.timezoneMinute).toBe(timezoneMinute);
+    expect(element.weekOfYear).toBe(weekOfYear);
     expect(element.weekday).toBe(weekday);
   });
 });
