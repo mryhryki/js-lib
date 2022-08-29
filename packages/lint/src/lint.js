@@ -31,7 +31,7 @@ const lint = async () => {
       }
     }
 
-    if (!options.dir.startsWith(`${currentDir}/`)) {
+    if (!options.dir.startsWith(currentDir)) {
       throw new Error(`Invalid directory: ${options.dir}`);
     }
     console.info(`Target directory: ${options.dir}`);
