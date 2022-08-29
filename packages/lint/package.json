@@ -2,7 +2,7 @@
   "name": "@mryhryki/lint",
   "author": "mryhryki",
   "description": "Lint tool pack for personal use",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mryhryki/js-lib.git",
@@ -38,6 +38,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "prettier": "^2.6.2"
   }
 }
