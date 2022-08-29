@@ -8,7 +8,6 @@ plugins:
   - "@typescript-eslint"
   - prettier
   - react
-  - unused-imports
 env:
   browser: true
   commonjs: true
