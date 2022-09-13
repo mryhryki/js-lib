@@ -1,0 +1,34 @@
+{
+  "name": "@mryhryki/email",
+  "author": "mryhryki",
+  "description": "Email library for personal use",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mryhryki/js-lib.git",
+    "directory": "packages/email"
+  },
+  "keywords": [
+    "email"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mryhryki/js-lib/issues"
+  },
+  "homepage": "https://github.com/mryhryki/js-lib/blob/main/packages/email/README.md",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
+  "scripts": {
+    "lint": "mryhryki-lint",
+    "lint:fix": "mryhryki-lint-fix",
+    "test": "node ./test.js"
+  },
+  "dependencies": {
+    "mailparser": "^3.5.0"
+  },
+  "devDependencies": {
+    "@mryhryki/lint": "^0.0.12"
+  }
+}
