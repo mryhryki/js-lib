@@ -1,4 +1,4 @@
-# @mryhrykiemail/
+# @mryhryki/email
 
 Email library for personal use.
 
