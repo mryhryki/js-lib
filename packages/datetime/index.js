@@ -71,6 +71,11 @@ class DateTime {
     return `${year}-${month}-${day}T${hour}:${minute}:${second}${timezoneSign}${timezoneHour}:${timezoneMinute}`;
   }
 
+  toDateText(timezone = "Asia/Tokyo") {
+    const { year, month, day } = this.get(timezone);
+    return `${year}-${month}-${day}`;
+  }
+
   toUnixTime() {
     return this.#value.unix();
   }
