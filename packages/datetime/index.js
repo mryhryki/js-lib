@@ -47,7 +47,7 @@ class DateTime {
     return new DateTime(dayjs());
   }
 
-  get(timezone = "Asia/Tokyo") {
+  get(timezone) {
     const value = this.#value.tz(timezone);
     const timezoneText = value.format("Z");
     return {
@@ -66,12 +66,12 @@ class DateTime {
     };
   }
 
-  toISO(timezone = "Asia/Tokyo") {
+  toISO(timezone) {
     const { year, month, day, hour, minute, second, timezoneSign, timezoneHour, timezoneMinute } = this.get(timezone);
     return `${year}-${month}-${day}T${hour}:${minute}:${second}${timezoneSign}${timezoneHour}:${timezoneMinute}`;
   }
 
-  toDateText(timezone = "Asia/Tokyo") {
+  toDateText(timezone) {
     const { year, month, day } = this.get(timezone);
     return `${year}-${month}-${day}`;
   }
