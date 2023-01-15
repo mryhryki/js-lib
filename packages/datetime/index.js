@@ -117,13 +117,13 @@ class DateTime {
   }
 
   toString() {
-    return this.toISO();
+    return this.toISO("UTC");
   }
 
   [Symbol.toPrimitive](hint) {
     switch (hint) {
       case "string":
-        return this.toISO();
+        return this.toISO("UTC");
       case "number":
       case "default":
       default:

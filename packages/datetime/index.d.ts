@@ -1,11 +1,11 @@
 export interface DateTimeElement {
-  year: string; // e.g.
-  month: string; // 01-12
+  year: string; // e.g. 2023
+  month: string; // "01"-"12"
   day: string;
   hour: string;
   minute: string;
   second: string;
-  milliSecond: string;
+  milliSecond: string; // "000"-"999"
   timezoneSign: "+" | "-";
   timezoneHour: string;
   timezoneMinute: string;
