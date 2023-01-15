@@ -20,7 +20,7 @@ export class DateTime {
   static now(): DateTime;
   get(timezone?: string): DateTimeElement;
   toISO(timezone?: string): string;
-  toDateText(): string; // => e.g. `2022-12-26`
+  toDateText(timezone?: string): string; // => e.g. `2022-12-26`
   toUnixTime(): number;
   toUnixTimeMs(): number;
   add(value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "milliSecond"): DateTime;
