@@ -17,7 +17,7 @@ export class DateTime {
   static parse(dateTimeText: string): DateTime;
   static at(unixTimeSec: number): DateTime;
   static atMs(unixTimeMs: number): DateTime;
-  static now(): DateTime;
+  static now(timezone: string): DateTime;
   get(timezone: string): DateTimeElement;
   toISO(timezone: string): string;
   toDateText(timezone: string): string; // => e.g. `2022-12-26`

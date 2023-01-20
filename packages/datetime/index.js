@@ -43,8 +43,8 @@ class DateTime {
     return new DateTime(dayjs(unixTimeMs));
   }
 
-  static now() {
-    return new DateTime(dayjs());
+  static now(timezone) {
+    return new DateTime(dayjs().tz(timezone));
   }
 
   get(timezone) {
