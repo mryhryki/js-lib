@@ -12,4 +12,4 @@ export interface ParseEmailResult {
   text: string[]
 }
 
-export type parseEmail = (emlRawData) => Promise<ParseEmailResult>
+export type parseEmail = (emlRawData: string) => Promise<ParseEmailResult>
