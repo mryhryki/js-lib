@@ -3,7 +3,7 @@ export interface ParseEmailResult {
   date: string
   subject: string
   to: string[]
-  from: string | null
+  from: string
   cc: string[]
   replyTo: string | null
   headers: Record<string, string | null | undefined>
@@ -12,4 +12,4 @@ export interface ParseEmailResult {
   text: string[]
 }
 
-export type parseEmail = (emlRawData: string) => Promise<ParseEmailResult>
+export function parseEmail(emlRawData: string): Promise<ParseEmailResult>;

@@ -17,7 +17,7 @@ const parseEmail = (emlData) => new Promise((resolve, reject) => {
         date: mail.date,
         subject: mail.subject,
         to: getAddressText(mail.to),
-        from: mail.from?.text ?? null,
+        from: mail.from?.text ?? "unkonwn-from@example.com",
         cc: getAddressText(mail.cc),
         replyTo: mail.replyTo?.value ?? null,
         headers: mail.headerLines.reduce((header, {key, line}) => ({...header, [key]: line}), {}),
