@@ -1,14 +1,17 @@
-const {simpleParser} = require("mailparser");
+const { simpleParser } = require("mailparser");
 
-const getAddressText = (address) => {
-  if (address != null) {
-    return (Array.isArray(address) ? address : [address]).filter((value) => value != null).map(({text}) => text);
+const UnknownAddress = "unkonwn-from@example.com";
+const DefaultAddress = { name: null, address: UnknownAddress };
+
+const getAddress = (address) => {
+  if (address == null || !Array.isArray(address.value)) {
+    return [];
   }
-  return [];
+  return address.value.map(({ name, address }) => ({ name, address }));
 };
 
 const parseEmail = (emlData) => new Promise((resolve, reject) => {
-  simpleParser(emlData, {/* options */}, (err, mail) => {
+  simpleParser(emlData, {/* options */ }, (err, mail) => {
     if (err) {
       reject(`Error parsing email: ${err}`);
     } else {
@@ -16,12 +19,12 @@ const parseEmail = (emlData) => new Promise((resolve, reject) => {
         messageId: mail.messageId,
         date: mail.date,
         subject: mail.subject,
-        to: getAddressText(mail.to),
-        from: mail.from?.text ?? "unkonwn-from@example.com",
-        cc: getAddressText(mail.cc),
+        to: getAddress(mail.to),
+        from: getAddress(mail.from)[0] || DefaultAddress,
+        cc: getAddress(mail.cc),
         replyTo: mail.replyTo?.value ?? null,
-        headers: mail.headerLines.reduce((header, {key, line}) => ({...header, [key]: line}), {}),
-        attachments: (mail.attachments ?? []).map((attachment) => ({...attachment, content: undefined})),
+        headers: mail.headerLines.reduce((header, { key, line }) => ({ ...header, [key]: line }), {}),
+        attachments: (mail.attachments ?? []).map((attachment) => ({ ...attachment, content: undefined })),
         html: String(mail.html ?? "").split(/\r?\n/g),
         text: String(mail.text ?? "").split(/\r?\n/g),
       };
@@ -30,4 +33,4 @@ const parseEmail = (emlData) => new Promise((resolve, reject) => {
   });
 });
 
-module.exports = {parseEmail};
+module.exports = { parseEmail };

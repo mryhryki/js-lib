@@ -1,15 +1,21 @@
 const fs = require("node:fs/promises");
 const path = require("node:path");
-const {parseEmail} = require("./index");
+const { parseEmail } = require("./index");
 
 const ExpectResult = {
   "messageId": "<CACvnhqv-BSudLM5mk3uhmJZpP8nRobsew3bCUmiOpPfBCQQ1xQ@mail.gmail.com>",
   "date": "2022-09-13T13:32:38.000Z",
   "subject": "TEST",
   "to": [
-    "Hiroyuki Moriya <mryhryki@gmail.com>",
+    {
+      name: "Hiroyuki Moriya",
+      address: "mryhryki@gmail.com",
+    },
   ],
-  "from": "Hiroyuki Moriya <mryhryki@gmail.com>",
+  "from": {
+    name: "Hiroyuki Moriya",
+    address: "mryhryki@gmail.com",
+  },
   "cc": [],
   "replyTo": null,
   "headers": {

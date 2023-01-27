@@ -1,10 +1,15 @@
+export interface ParseEmailAddress {
+  name: string | null
+  address: string
+}
+
 export interface ParseEmailResult {
   messageId: string
   date: string
   subject: string
-  to: string[]
-  from: string
-  cc: string[]
+  to: ParseEmailAddress[]
+  from: ParseEmailAddress
+  cc: ParseEmailAddress[]
   replyTo: string | null
   headers: Record<string, string | null | undefined>
   attachments: { filename: string, contentType: string }[],
