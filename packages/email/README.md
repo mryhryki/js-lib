@@ -15,9 +15,15 @@ console.log(JSON.stringify(await parseEmail(emlRawData), null, 2));
   "date": "2022-09-13T13:32:38.000Z",
   "subject": "TEST",
   "to": [
-    "Hiroyuki Moriya <mryhryki@gmail.com>"
+    {
+      "name": "Hiroyuki Moriya",
+      "address": "mryhryki@gmail.com"
+    }
   ],
-  "from": "Hiroyuki Moriya <mryhryki@gmail.com>",
+  "from": {
+    "name": "Hiroyuki Moriya",
+    "address": "mryhryki@gmail.com"
+  },
   "cc": [],
   "replyTo": null,
   "headers": {
