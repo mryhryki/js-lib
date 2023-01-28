@@ -26,8 +26,6 @@ parserOptions:
 rules:
   prettier/prettier: error
   react/prop-types: 'off'
-  'react-hooks/exhaustive-deps': 'off'
-  '@typescript-eslint/no-var-requires': 'off'
 settings:
   react:
     version: detect
