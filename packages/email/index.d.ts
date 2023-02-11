@@ -4,8 +4,8 @@ export interface ParseEmailAddress {
 }
 
 export interface ParseEmailResult {
-  messageId: string
-  date: string
+  messageId: string | null
+  date: string | null
   subject: string
   to: ParseEmailAddress[]
   from: ParseEmailAddress

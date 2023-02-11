@@ -16,9 +16,9 @@ const parseEmail = (emlData) => new Promise((resolve, reject) => {
       reject(`Error parsing email: ${err}`);
     } else {
       const data = {
-        messageId: mail.messageId,
-        date: mail.date,
-        subject: mail.subject,
+        messageId: mail.messageId ?? null,
+        date: mail.date ?? null,
+        subject: mail.subject ?? "(No Subject)",
         to: getAddress(mail.to),
         from: getAddress(mail.from)[0] || DefaultAddress,
         cc: getAddress(mail.cc),
