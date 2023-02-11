@@ -2,7 +2,7 @@
   "name": "@mryhryki/email",
   "author": "mryhryki",
   "description": "Email library for personal use",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mryhryki/js-lib.git",
