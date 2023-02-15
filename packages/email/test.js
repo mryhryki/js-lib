@@ -3,41 +3,34 @@ const path = require("node:path");
 const { parseEmail } = require("./index");
 
 const ExpectResult = {
-  "messageId": "<CACvnhqv-BSudLM5mk3uhmJZpP8nRobsew3bCUmiOpPfBCQQ1xQ@mail.gmail.com>",
-  "date": "2022-09-13T13:32:38.000Z",
-  "subject": "TEST",
-  "to": [
+  messageId: "<CACvnhqv-BSudLM5mk3uhmJZpP8nRobsew3bCUmiOpPfBCQQ1xQ@mail.gmail.com>",
+  date: "2022-09-13T13:32:38.000Z",
+  subject: "TEST",
+  to: [
     {
       name: "Hiroyuki Moriya",
       address: "mryhryki@gmail.com",
     },
   ],
-  "from": {
+  from: {
     name: "Hiroyuki Moriya",
     address: "mryhryki@gmail.com",
   },
-  "cc": [],
-  "replyTo": null,
-  "headers": {
+  cc: [],
+  replyTo: null,
+  headers: {
     "mime-version": "MIME-Version: 1.0",
-    "date": "Date: Tue, 13 Sep 2022 22:32:38 +0900",
+    date: "Date: Tue, 13 Sep 2022 22:32:38 +0900",
     "message-id": "Message-ID: <CACvnhqv-BSudLM5mk3uhmJZpP8nRobsew3bCUmiOpPfBCQQ1xQ@mail.gmail.com>",
-    "subject": "Subject: TEST",
-    "from": "From: Hiroyuki Moriya <mryhryki@gmail.com>",
-    "to": "To: Hiroyuki Moriya <mryhryki@gmail.com>",
-    "content-type": "Content-Type: multipart/alternative; boundary=\"000000000000c1569105e88f0be0\"",
+    subject: "Subject: TEST",
+    from: "From: Hiroyuki Moriya <mryhryki@gmail.com>",
+    to: "To: Hiroyuki Moriya <mryhryki@gmail.com>",
+    "content-type": 'Content-Type: multipart/alternative; boundary="000000000000c1569105e88f0be0"',
   },
-  "attachments": [],
-  "html": [
-    "<div dir=\"ltr\"><b>BODY</b></div>",
-    "",
-  ],
-  "text": [
-    "*BODY*",
-    "",
-  ],
+  attachments: [],
+  html: ['<div dir="ltr"><b>BODY</b></div>', ""],
+  text: ["*BODY*", ""],
 };
-
 
 const main = async () => {
   const emlRawData = await fs.readFile(path.resolve(__dirname, "sample.eml"));

@@ -2,7 +2,7 @@
   "name": "@mryhryki/email",
   "author": "mryhryki",
   "description": "Email library for personal use",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mryhryki/js-lib.git",
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "lint": "mryhryki-lint",
-    "lint:fix": "mryhryki-lint-fix",
+    "lint:fix": "mryhryki-lint --fix",
     "test": "node ./test.js"
   },
   "dependencies": {
