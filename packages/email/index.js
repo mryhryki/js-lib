@@ -40,8 +40,8 @@ const parseEmail = (emlData) =>
             replyTo: mail.replyTo?.value ?? null,
             headers: mail.headerLines.reduce((header, { key, line }) => ({ ...header, [key]: line }), {}),
             attachments: (mail.attachments ?? []).map((attachment) => ({ ...attachment, content: undefined })),
-            html: String(mail.html ?? "").split(/\r?\n/g),
-            text: String(mail.text ?? "").split(/\r?\n/g),
+            html: String(mail.html || "").split(/\r?\n/g),
+            text: String(mail.text || "").split(/\r?\n/g),
           };
           resolve(data);
         }
