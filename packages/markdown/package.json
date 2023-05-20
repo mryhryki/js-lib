@@ -29,13 +29,7 @@
     "markdown-it-emoji": "^2.0.2",
     "markdown-it-highlightjs": "^4.0.1",
     "markdown-it-mark": "^3.0.1",
-    "markdown-it-sanitizer": "^0.4.3",
-    "markdown-it-task-lists": "^2.1.1",
-    "rehype-stringify": "^9.0.3",
-    "remark-gfm": "^3.0.1",
-    "remark-parse": "^10.0.1",
-    "remark-rehype": "^10.1.0",
-    "unified": "^10.1.2"
+    "markdown-it-sanitizer": "^0.4.3"
   },
   "devDependencies": {
     "jest": "^28.0.3"
