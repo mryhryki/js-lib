@@ -18,6 +18,7 @@ describe("Convert Markdown", () => {
       "```json",
       '{"foo":"bar"}',
       "```",
+      "<!-- COMMENT -->"
     ].join("\n");
 
     const html = [
