@@ -42,7 +42,11 @@ const TitleMatchers = [
 const TagMatcher = new RegExp("<\\/?[^>]+>", "g");
 
 const convert = (text) => {
-  const html = md.render(text).replace(/<img /g, '<img style="max-width:100%;object-fit:contain;" ').trim();
+  const html = md.render(text)
+    .replace(/<img /g, '<img style="max-width:100%;object-fit:contain;" ')
+    .replace(/&lt;!--/g, '<!--')
+    .replace(/--&gt;/g, '--g>')
+    .trim();
 
   let title = "NoTitle";
   for (const matcher of TitleMatchers) {
