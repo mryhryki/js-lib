@@ -3,6 +3,8 @@ const UTC = require("dayjs/plugin/utc");
 const timezone = require("dayjs/plugin/timezone");
 const weekOfYear = require("dayjs/plugin/weekOfYear");
 
+const JpTimeZone = "Asia/Tokyo";
+
 dayjs.extend(UTC);
 dayjs.extend(timezone);
 dayjs.extend(weekOfYear);
@@ -63,6 +65,16 @@ class DateTime {
       timezoneMinute: timezoneText.slice(4, 7),
       weekOfYear: value.week(),
       weekday: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][value.day()],
+    };
+  }
+
+  getJpEra() {
+    const def = JpEraDefinitions.find((def) => def.start <= this && this < def.end);
+    if (def == null) return null;
+    const year = parseInt(this.get(JpTimeZone).year) - parseInt(def.start.get(JpTimeZone).year) + 1;
+    return {
+      year: year.toString(10).padStart(2, "0"),
+      name: def.name,
     };
   }
 
@@ -131,5 +143,33 @@ class DateTime {
     }
   }
 }
+
+const JpEraDefinitions = [
+  {
+    name: "R",
+    start: DateTime.parse("2019-05-01T00:00:00+09:00"),
+    end: DateTime.parse("2100-01-01T00:00:00+09:00"),
+  },
+  {
+    name: "H",
+    start: DateTime.parse("1989-01-08T00:00:00+09:00"),
+    end: DateTime.parse("2019-05-01T00:00:00+09:00"),
+  },
+  {
+    name: "S",
+    start: DateTime.parse("1926-12-25T00:00:00+09:00"),
+    end: DateTime.parse("1989-01-08T00:00:00+09:00"),
+  },
+  {
+    name: "T",
+    start: DateTime.parse("1912-07-30T00:00:00+09:00"),
+    end: DateTime.parse("1926-12-25T00:00:00+09:00"),
+  },
+  {
+    name: "M",
+    start: DateTime.parse("1868-01-25T00:00:00+09:00"),
+    end: DateTime.parse("1912-07-30T00:00:00+09:00"),
+  },
+];
 
 module.exports = { DateTime };

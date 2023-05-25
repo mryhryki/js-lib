@@ -1,5 +1,7 @@
 import { DateTime } from "./index";
 
+const TimeZone = "Asia/Tokyo";
+
 const ISO8601 = "2022-01-16T17:32:39+09:00";
 const ISO8601Ms = "2022-01-16T17:32:39.091+09:00";
 const UnixTimeSec = 1642321959;
@@ -120,7 +122,7 @@ describe("toUnixTimeMs()", () => {
 
 describe("get()", () => {
   it("from ISO8601 Text", () => {
-    const element = DateTime.parse(ISO8601).get();
+    const element = DateTime.parse(ISO8601).get(TimeZone);
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
     expect(element.day).toBe(day);
@@ -136,7 +138,7 @@ describe("get()", () => {
   });
 
   it("from ISO8601Ms Text", () => {
-    const element = DateTime.parse(ISO8601Ms).get();
+    const element = DateTime.parse(ISO8601Ms).get(TimeZone);
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
     expect(element.day).toBe(day);
@@ -152,7 +154,7 @@ describe("get()", () => {
   });
 
   it("from UnixTimeSec", () => {
-    const element = DateTime.at(UnixTimeSec).get();
+    const element = DateTime.at(UnixTimeSec).get(TimeZone);
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
     expect(element.day).toBe(day);
@@ -168,7 +170,7 @@ describe("get()", () => {
   });
 
   it("from UnixTimeMs", () => {
-    const element = DateTime.atMs(UnixTimeMs).get();
+    const element = DateTime.atMs(UnixTimeMs).get(TimeZone);
     expect(element.year).toBe(year);
     expect(element.month).toBe(month);
     expect(element.day).toBe(day);
@@ -194,7 +196,7 @@ describe("add()", () => {
       .add(1, "minute")
       .add(1, "second")
       .add(1, "milliSecond")
-      .get();
+      .get(TimeZone);
     expect(element.year).toBe(padZero(parseInt(year, 10) + 1, 4));
     expect(element.month).toBe(padZero(parseInt(month, 10) + 1, 2));
     expect(element.day).toBe(padZero(parseInt(day, 10) + 1, 2));
@@ -215,7 +217,7 @@ describe("set()", () => {
       .set("minute", 1)
       .set("second", 1)
       .set("milliSecond", 1)
-      .get();
+      .get(TimeZone);
     expect(element.year).toBe(padZero(1999, 4));
     expect(element.month).toBe(padZero(1, 2));
     expect(element.day).toBe(padZero(1, 2));
@@ -232,5 +234,29 @@ describe("clone()", () => {
     const datetime2 = datetime1.clone();
     expect(datetime1.toUnixTimeMs()).toBe(datetime2.toUnixTimeMs());
     expect(datetime1).not.toBe(datetime2);
+  });
+});
+
+describe("JpYear", () => {
+  const list = [
+    ["1868-01-24T00:00:00+09:00", null], //
+    ["1868-01-25T00:00:00+09:00", { name: "M", year: "01" }],
+    ["1900-01-01T00:00:00+09:00", { name: "M", year: "33" }],
+    ["1912-07-29T00:00:00+09:00", { name: "M", year: "45" }],
+    ["1912-07-30T00:00:00+09:00", { name: "T", year: "01" }],
+    ["1918-01-01T00:00:00+09:00", { name: "T", year: "07" }],
+    ["1926-12-24T00:00:00+09:00", { name: "T", year: "15" }],
+    ["1926-12-25T00:00:00+09:00", { name: "S", year: "01" }],
+    ["1968-01-07T00:00:00+09:00", { name: "S", year: "43" }],
+    ["1989-01-07T00:00:00+09:00", { name: "S", year: "64" }],
+    ["1989-01-08T00:00:00+09:00", { name: "H", year: "01" }],
+    ["2009-01-08T00:00:00+09:00", { name: "H", year: "21" }],
+    ["2019-04-30T00:00:00+09:00", { name: "H", year: "31" }],
+    ["2019-05-01T00:00:00+09:00", { name: "R", year: "01" }],
+    ["2023-01-01T00:00:00+09:00", { name: "R", year: "05" }],
+  ];
+  it.each(list)("returns correct values", (iso8601, expectValue) => {
+    const result = DateTime.parse(iso8601).getJpEra();
+    expect(result).toEqual(expectValue);
   });
 });
