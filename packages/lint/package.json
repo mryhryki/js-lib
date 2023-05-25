@@ -2,7 +2,7 @@
   "name": "@mryhryki/lint",
   "author": "mryhryki",
   "description": "Lint tool pack for personal use",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mryhryki/js-lib.git",

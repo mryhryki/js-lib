@@ -26,6 +26,10 @@ parserOptions:
 rules:
   prettier/prettier: error
   react/prop-types: 'off'
+  eqeqeq:
+    - "error"
+    - "always"
+    - null: "never"
 settings:
   react:
     version: detect
