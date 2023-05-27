@@ -1,9 +1,10 @@
 "use strict";
 
 import { unified } from "unified";
-import parser from "remark-parse";
-import mdast2hast from "remark-rehype";
-import compiler from "rehype-stringify";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import remarkHighlightJs from "remark-highlight.js";
 
 // const lineNumber = (md) => {
 //   md.renderer.rules.list_item_open = (tokens, idx, options, env, self) => {
@@ -19,9 +20,10 @@ import compiler from "rehype-stringify";
 // };
 
 const processor = unified() //
-  .use(parser)
-  .use(mdast2hast)
-  .use(compiler)
+  .use(remarkParse)
+  .use(remarkHighlightJs)
+  .use(remarkRehype)
+  .use(rehypeStringify)
   .freeze();
 
 const TitleMatchers = [
