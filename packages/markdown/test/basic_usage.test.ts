@@ -1,7 +1,8 @@
-const { convert } = require("../index");
+import { describe, it } from "vitest";
+import { convert } from "../src";
 
 describe("Convert Markdown", () => {
-  it("Basic Usage", () => {
+  it("Basic Usage", async ({ expect }) => {
     const markdown = [
       "# Header1",
       "Paragraph :smile:",
@@ -18,7 +19,7 @@ describe("Convert Markdown", () => {
       "```json",
       '{"foo":"bar"}',
       "```",
-      "<!-- COMMENT -->"
+      "<!-- COMMENT -->",
     ].join("\n");
 
     const html = [
@@ -33,9 +34,9 @@ describe("Convert Markdown", () => {
       "</ul>",
       '<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">&quot;foo&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;bar&quot;</span><span class="hljs-punctuation">}</span>',
       "</code></pre>",
-      "<!-- COMMENT -->"
+      "<!-- COMMENT -->",
     ].join("\n");
 
-    expect(convert(markdown).html).toEqual(html);
+    expect((await convert(markdown)).html).toEqual(html);
   });
 });

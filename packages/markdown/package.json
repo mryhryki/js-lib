@@ -24,7 +24,7 @@
     "build": "esbuild --bundle --minify --platform=browser --outdir=./ ./src/index.ts",
     "lint": "mryhryki-lint",
     "lint:fix": "mryhryki-lint --fix",
-    "test": "jest"
+    "test": "vitest"
   },
   "dependencies": {
     "rehype-stringify": "^9.0.3",
@@ -35,16 +35,27 @@
   "devDependencies": {
     "@mryhryki/lint": "^0.0.14",
     "esbuild": "^0.17.19",
-    "jest": "^28.0.3",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vitest": "^0.31.1"
   },
   "jest": {
     "testTimeout": 1000,
     "moduleFileExtensions": [
-      "js"
+      "js",
+      "ts"
     ],
+    "transform": {
+      "^.+\\.tsx?$": [
+        "esbuild-jest",
+        {
+          "sourcemap": "inline",
+          "target": "node18",
+          "format": "cjs"
+        }
+      ]
+    },
     "testMatch": [
-      "**/*.test.js"
+      "**/*.test.ts"
     ]
   }
 }
