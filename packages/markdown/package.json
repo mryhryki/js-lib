@@ -24,12 +24,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "markdown-it": "^13.0.1",
-    "markdown-it-checkbox": "^1.1.0",
-    "markdown-it-emoji": "^2.0.2",
-    "markdown-it-highlightjs": "^4.0.1",
-    "markdown-it-mark": "^3.0.1",
-    "markdown-it-sanitizer": "^0.4.3"
   },
   "devDependencies": {
     "jest": "^28.0.3"
