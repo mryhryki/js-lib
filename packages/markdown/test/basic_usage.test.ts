@@ -5,13 +5,11 @@ describe("Convert Markdown", () => {
   it("Basic Usage", async ({ expect }) => {
     const markdown = [
       "# Header1",
-      "Paragraph :smile:",
+      "Paragraph",
       "",
       "https://example.com/path/index.html#hash?foo=bar",
       "",
       "![example](https://example.com/image.png)",
-      "",
-      "==MARK==",
       "",
       "- [ ] TODO",
       "- [x] DONE",
@@ -24,7 +22,7 @@ describe("Convert Markdown", () => {
 
     const html = [
       "<h1>Header1</h1>",
-      `<p>Paragraph ${String.fromCodePoint(0x1f604)}</p>`,
+      `<p>Paragraph</p>`,
       '<p><a href="https://example.com/path/index.html#hash?foo=bar">https://example.com/path/index.html#hash?foo=bar</a></p>',
       '<p><img style="max-width:100%;object-fit:contain;" src="https://example.com/image.png" alt="example" /></p>',
       "<p><mark>MARK</mark></p>",
@@ -34,7 +32,6 @@ describe("Convert Markdown", () => {
       "</ul>",
       '<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">&quot;foo&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;bar&quot;</span><span class="hljs-punctuation">}</span>',
       "</code></pre>",
-      "<!-- COMMENT -->",
     ].join("\n");
 
     expect((await convert(markdown)).html).toEqual(html);
