@@ -32,24 +32,15 @@
     "markdown-it-sanitizer": "^0.4.3"
   },
   "devDependencies": {
-    "esbuild": "^0.17.19",
-    "esbuild-jest": "^0.5.0",
     "jest": "^28.0.3"
   },
   "jest": {
     "testTimeout": 1000,
     "moduleFileExtensions": [
-      "js",
-      "ts"
+      "js"
     ],
-    "transform": {
-      "^.+\\.tsx?$": ["esbuild-jest", {
-        "sourcemap": "inline"
-      }]
-    },
     "testMatch": [
-      "**/*.test.js",
-      "**/*.test.ts"
+      "**/*.test.js"
     ]
   }
 }
