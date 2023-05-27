@@ -30,6 +30,7 @@
     "unified": "^10.1.2"
   },
   "devDependencies": {
+    "@mryhryki/lint": "^0.0.14",
     "jest": "^28.0.3"
   },
   "jest": {
