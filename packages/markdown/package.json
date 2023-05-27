@@ -21,6 +21,8 @@
     "npm": ">=8"
   },
   "scripts": {
+    "lint": "mryhryki-lint",
+    "lint:fix": "mryhryki-lint --fix",
     "test": "jest"
   },
   "dependencies": {
