@@ -1,32 +1,28 @@
 "use strict";
 
-const markdownIt = require("markdown-it");
-const markdownItSanitizer = require("markdown-it-sanitizer");
-const markdownItHighlightJs = require("markdown-it-highlightjs");
-const markdownItEmoji = require("markdown-it-emoji");
-const markdownItMark = require("markdown-it-mark");
-const markdownItCheckbox = require("markdown-it-checkbox");
+import { unified } from "unified";
+import parser from "remark-parse";
+import mdast2hast from "remark-rehype";
+import compiler from "rehype-stringify";
 
-const lineNumber = (md) => {
-  md.renderer.rules.list_item_open = (tokens, idx, options, env, self) => {
-    const token = tokens[idx];
-    if (token != null && token.map != null) {
-      const index = token.map[0];
-      if (index >= 0) {
-        tokens[idx].attrSet("data-mdln", `${index + 1}`);
-      }
-    }
-    return self.renderToken(tokens, idx, options);
-  };
-};
+// const lineNumber = (md) => {
+//   md.renderer.rules.list_item_open = (tokens, idx, options, env, self) => {
+//     const token = tokens[idx];
+//     if (token != null && token.map != null) {
+//       const index = token.map[0];
+//       if (index >= 0) {
+//         tokens[idx].attrSet("data-mdln", `${index + 1}`);
+//       }
+//     }
+//     return self.renderToken(tokens, idx, options);
+//   };
+// };
 
-const md = markdownIt({html: true, xhtmlOut: true, breaks: true, linkify: true})
-  .use(markdownItSanitizer)
-  .use(markdownItHighlightJs, {auto: false})
-  .use(markdownItEmoji)
-  .use(markdownItMark)
-  .use(markdownItCheckbox, {disabled: null, idPrefix: "checkbox_", ulClass: null, liClass: null})
-  .use(lineNumber);
+const processor = unified() //
+  .use(parser)
+  .use(mdast2hast)
+  .use(compiler)
+  .freeze();
 
 const TitleMatchers = [
   new RegExp("title: (.+)"),
@@ -41,12 +37,9 @@ const TitleMatchers = [
 
 const TagMatcher = new RegExp("<\\/?[^>]+>", "g");
 
-const convert = (text) => {
-  const html = md.render(text)
-    .replace(/<img /g, '<img style="max-width:100%;object-fit:contain;" ')
-    .replace(/&lt;!--/g, '<!--')
-    .replace(/--&gt;/g, '--g>')
-    .trim();
+export const convert = async (text) => {
+  const result = await processor.process(text);
+  const html: string = result.toString("utf-8");
 
   let title = "NoTitle";
   for (const matcher of TitleMatchers) {
@@ -62,5 +55,3 @@ const convert = (text) => {
     html,
   };
 };
-
-module.exports = {convert}
