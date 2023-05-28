@@ -3,3 +3,4 @@ package-lock.json
 .editorconfig
 .eslintrc.yaml
 .prettierrc.json
+index.js

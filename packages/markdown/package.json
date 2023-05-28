@@ -21,6 +21,7 @@
     "npm": ">=8"
   },
   "scripts": {
+    "publish": "npm run lint && npm run test && npm run build && npm publish",
     "build": "esbuild --bundle --minify --platform=browser --outdir=./ ./src/index.ts",
     "lint": "mryhryki-lint",
     "lint:fix": "mryhryki-lint --fix",
