@@ -2,7 +2,7 @@
   "name": "@mryhryki/markdown",
   "author": "mryhryki",
   "description": "Convert markdown to HTML library for personal use",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mryhryki/js-lib.git",
