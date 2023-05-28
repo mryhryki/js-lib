@@ -1,28 +1,22 @@
 "use strict";
 
-import { unified } from "unified";
+import { unified, Plugin } from "unified";
+import { VFileCompatible } from "vfile";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import remarkHighlightJs from "remark-highlight.js";
-
-// const lineNumber = (md) => {
-//   md.renderer.rules.list_item_open = (tokens, idx, options, env, self) => {
-//     const token = tokens[idx];
-//     if (token != null && token.map != null) {
-//       const index = token.map[0];
-//       if (index >= 0) {
-//         tokens[idx].attrSet("data-mdln", `${index + 1}`);
-//       }
-//     }
-//     return self.renderToken(tokens, idx, options);
-//   };
-// };
+import remarkGfm from "remark-gfm";
+import { htmlPlugin } from "./plugin/html";
+import { markdownPlugin } from "./plugin/markdown";
 
 const processor = unified() //
   .use(remarkParse)
+  .use(remarkGfm)
   .use(remarkHighlightJs)
+  .use(markdownPlugin)
   .use(remarkRehype)
+  .use(htmlPlugin)
   .use(rehypeStringify)
   .freeze();
 
