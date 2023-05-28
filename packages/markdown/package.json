@@ -21,7 +21,7 @@
     "npm": ">=8"
   },
   "scripts": {
-    "publish": "npm run lint && npm run test && npm run build && npm publish",
+    "publish": "npm run lint && npm test && npm run build && npm publish",
     "build": "esbuild --bundle --minify --platform=browser --outdir=./ ./src/index.ts",
     "lint": "mryhryki-lint",
     "lint:fix": "mryhryki-lint --fix",
@@ -39,25 +39,5 @@
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.2",
     "vitest": "^0.31.1"
-  },
-  "jest": {
-    "testTimeout": 1000,
-    "moduleFileExtensions": [
-      "js",
-      "ts"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": [
-        "esbuild-jest",
-        {
-          "sourcemap": "inline",
-          "target": "node18",
-          "format": "cjs"
-        }
-      ]
-    },
-    "testMatch": [
-      "**/*.test.ts"
-    ]
   }
 }
