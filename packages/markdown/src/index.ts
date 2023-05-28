@@ -17,7 +17,7 @@ const processor = unified() //
   .use(markdownPlugin)
   .use(remarkRehype)
   .use(htmlPlugin)
-  .use(rehypeStringify)
+  .use(rehypeStringify, { closeSelfClosing: true })
   .freeze();
 
 const TitleMatchers = [
