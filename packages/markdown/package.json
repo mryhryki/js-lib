@@ -25,7 +25,8 @@
     "build": "esbuild --bundle --minify --platform=browser --outdir=./ ./src/index.ts",
     "lint": "mryhryki-lint",
     "lint:fix": "mryhryki-lint --fix",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest dev"
   },
   "devDependencies": {
     "@mryhryki/lint": "^0.0.14",
