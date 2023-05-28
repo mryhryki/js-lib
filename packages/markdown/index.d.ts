@@ -3,4 +3,4 @@ interface ConvertResult {
   html: string;
 }
 
-export function convert(markdown: string): ConvertResult;
+export function convert(markdown: string): Promise<ConvertResult>;

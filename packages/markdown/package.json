@@ -2,7 +2,7 @@
   "name": "@mryhryki/markdown",
   "author": "mryhryki",
   "description": "Convert markdown to HTML library for personal use",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mryhryki/js-lib.git",
@@ -21,26 +21,23 @@
     "npm": ">=8"
   },
   "scripts": {
-    "test": "jest"
-  },
-  "dependencies": {
-    "markdown-it": "^13.0.1",
-    "markdown-it-checkbox": "^1.1.0",
-    "markdown-it-emoji": "^2.0.2",
-    "markdown-it-highlightjs": "^4.0.1",
-    "markdown-it-mark": "^3.0.1",
-    "markdown-it-sanitizer": "^0.4.3"
+    "publish": "npm run lint && npm test && npm run build && npm publish",
+    "build": "esbuild --bundle --minify --platform=browser --outdir=./ ./src/index.ts",
+    "lint": "mryhryki-lint",
+    "lint:fix": "mryhryki-lint --fix",
+    "test": "vitest"
   },
   "devDependencies": {
-    "jest": "^28.0.3"
-  },
-  "jest": {
-    "testTimeout": 1000,
-    "moduleFileExtensions": [
-      "js"
-    ],
-    "testMatch": [
-      "**/*.test.js"
-    ]
+    "@mryhryki/lint": "^0.0.14",
+    "esbuild": "^0.17.19",
+    "rehype-stringify": "^9.0.3",
+    "remark-gfm": "^3.0.1",
+    "remark-highlight.js": "^7.0.1",
+    "remark-parse": "^10.0.2",
+    "remark-rehype": "^10.1.0",
+    "typescript": "^5.0.4",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2",
+    "vitest": "^0.31.1"
   }
 }
