@@ -27,19 +27,17 @@
     "lint:fix": "mryhryki-lint --fix",
     "test": "vitest"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@mryhryki/lint": "^0.0.14",
+    "esbuild": "^0.17.19",
     "rehype-stringify": "^9.0.3",
     "remark-gfm": "^3.0.1",
     "remark-highlight.js": "^7.0.1",
     "remark-parse": "^10.0.2",
     "remark-rehype": "^10.1.0",
-    "unified": "^10.1.2",
-    "unist-util-visit": "^4.1.2"
-  },
-  "devDependencies": {
-    "@mryhryki/lint": "^0.0.14",
-    "esbuild": "^0.17.19",
     "typescript": "^5.0.4",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2",
     "vitest": "^0.31.1"
   },
   "jest": {
